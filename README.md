@@ -8,20 +8,41 @@ Um módulo Xposed para personalizar seu WhatsApp.
 
 ### Personalização
 
-- Ativar novo Tema do WhatsApp.
-- Colocar segundos ao lado dos horários.
-- Adicionar texto ao lado dos horários.
+|  | Status |
+| ------------- | ------------- |
+| Novo estilo de cores| ✅ |
+| Novo estilo de home | ✅ |
+| Novo estilo de configurações | ✅ |
+| Filtragem de chats | ✅ |
+| Botões com bordas | ✅ |
+| Menu com ícones | ✅ |
+| ícones outlined | ✅ |
+| Mostrar nome e recado | ✅ |
+| Segundos no horário | ✅ |
+| Alterar cores globais | ✅ |
+
 
 ### Funções
 
-- Ver mensagens e status apagados.
-- Encaminhar mensagens sem a tag de encaminhado.
-- Ocultar visualização de status.
-- Ocultar visualização de mensagem.
-- Ocultar status: digitando.
-- Ocultar status: gravando audio.
-- Desativar visualização única.
-- Mais funções em breve.
+|  | Status |
+| ------------- | ------------- |
+| Ver mensagens apagadas | ✅ |
+| Ver status apagados | ✅ |
+| Remover limite de encaminhamento | ⚠️ BETA |
+| Baixar status | ⚠️ BETA |
+| Videos em máxima resolução | ⚠️ BETA |
+
+### Privacidades
+
+|  | Status |
+| ------------- | ------------- |
+| Ocultar tag de encaminhamento | ✅ |
+| Congelar visto por último | ⚠️ BETA |
+| Ocultar visualização de status | ❌ BUG |
+| Ocultar recebimento | ✅ |
+| Ocultar digitando... | ✅ |
+| Ocultar gravando... | ✅ |
+| Desabilitar visualização unica | ✅ |
 
 ## Compatibilidade
 

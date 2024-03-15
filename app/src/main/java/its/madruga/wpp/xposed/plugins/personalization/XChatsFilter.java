@@ -1,4 +1,4 @@
-package its.madruga.wpp.xposed.plugins;
+package its.madruga.wpp.xposed.plugins.personalization;
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
@@ -25,7 +25,6 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
-import its.madruga.wpp.ClassesReference;
 import its.madruga.wpp.xposed.models.XHookBase;
 
 public class XChatsFilter extends XHookBase {
@@ -39,7 +38,7 @@ public class XChatsFilter extends XHookBase {
 
     public XChatsFilter(ClassLoader loader, XSharedPreferences preferences) {
         super(loader, preferences);
-        var newHome = prefs != null && prefs.getBoolean("novahome", false);
+        var newHome = prefs.getBoolean("novahome", false);
         if (newHome) {
             tabs.add(CHATS);
             tabs.add(GROUPS);
@@ -57,7 +56,7 @@ public class XChatsFilter extends XHookBase {
 
     public void doHook() {
 
-        var separateGroups = prefs.getBoolean("separategroups",false);
+        var separateGroups = prefs.getBoolean("separategroups", false);
         if (!separateGroups) return;
 
         var cFrag = XposedHelpers.findClass("com.whatsapp.conversationslist.ConversationsFragment", loader);

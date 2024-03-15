@@ -1,4 +1,4 @@
-package its.madruga.wpp.xposed.plugins;
+package its.madruga.wpp.xposed.plugins.personalization;
 
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import static its.madruga.wpp.ClassesReference.ChangeColors.customDrawable1;
@@ -25,7 +25,6 @@ import org.xmlpull.v1.XmlPullParser;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedHelpers;
-import its.madruga.wpp.ClassesReference;
 import its.madruga.wpp.utils.colors.IColors;
 import its.madruga.wpp.xposed.models.XHookBase;
 
@@ -73,16 +72,15 @@ public class XChangeColors extends XHookBase {
 
         }
 
-        findAndHookMethod(Activity.class.getName(), loader, "onCreate", Bundle.class,
-                new XC_MethodHook() {
-                    @Override
-                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                        super.afterHookedMethod(param);
-                        var activity = (Activity) param.thisObject;
-                        var view = activity.findViewById(android.R.id.content).getRootView();
-                        replaceColors(view);
-                    }
-                });
+        findAndHookMethod(Activity.class.getName(), loader, "onCreate", Bundle.class, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                super.afterHookedMethod(param);
+                var activity = (Activity) param.thisObject;
+                var view = activity.findViewById(android.R.id.content).getRootView();
+                replaceColors(view);
+            }
+        });
 
         var intBgHook = new IntBgColorHook();
         findAndHookMethod(Paint.class.getName(), loader, "setColor", int.class, intBgHook);

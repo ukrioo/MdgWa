@@ -46,7 +46,7 @@ Um módulo Xposed para personalizar seu WhatsApp.
 
 ## Compatibilidade
 
-- WhatsApp Beta
+- WhatsApp Estável
 
 ## Uso
 

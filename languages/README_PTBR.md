@@ -51,7 +51,7 @@ Um módulo Xposed para personalizar seu WhatsApp.
 ## Uso
 
 - [Instalação do LSPosed](https://github.com/LSPosed/LSPosed)
-- [Baixar Modulo](https://github.com/ItsMadruga/MdgWa/releases/latest)
+- Baixar Modulo: [Estável](https://github.com/ItsMadruga/MdgWa/releases/latest) or [Beta](https://github.com/ItsMadruga/MdgWa/actions)
 - Instale o Módulo e ative no LSPosed
 - Reinicie o WhatsApp para que as modificações entrem em vigor.
 

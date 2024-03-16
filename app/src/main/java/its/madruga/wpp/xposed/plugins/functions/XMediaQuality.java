@@ -1,6 +1,7 @@
 package its.madruga.wpp.xposed.plugins.functions;
 
 import static de.robv.android.xposed.XposedHelpers.findClass;
+import static de.robv.android.xposed.XposedHelpers.setIntField;
 import static its.madruga.wpp.ClassesReference.MediaQuality.imainClass;
 import static its.madruga.wpp.ClassesReference.MediaQuality.imethod;
 import static its.madruga.wpp.ClassesReference.MediaQuality.iparam1;
@@ -11,13 +12,19 @@ import static its.madruga.wpp.ClassesReference.MediaQuality.vParam2;
 import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod;
 import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod2;
 
+import android.graphics.Bitmap;
+import android.graphics.RecordingCanvas;
+import android.net.Uri;
 import android.util.Pair;
 
+import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import its.madruga.wpp.xposed.models.XHookBase;
 
@@ -56,6 +63,7 @@ public class XMediaQuality extends XHookBase {
         }
 
         if (imageQuality) {
+            // 6Ex
             var iqClass = findClass(imainClass, loader);
             XposedHelpers.findAndHookMethod(iqClass, imethod, findClass(iparam1, loader), iqClass, int.class, new XC_MethodHook() {
                 @Override
@@ -73,6 +81,10 @@ public class XMediaQuality extends XHookBase {
                     super.beforeHookedMethod(param);
                 }
             });
+
+            // Prevent crashes in Media preview
+            XposedHelpers.findAndHookMethod(RecordingCanvas.class.getName(), loader, "throwIfCannotDraw", Bitmap.class, XC_MethodReplacement.DO_NOTHING);
+
         }
     }
 

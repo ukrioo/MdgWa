@@ -80,7 +80,7 @@ public class XAntiRevoke extends XHookBase {
     @Override
     public void doHook() {
         mShared = mApp.getSharedPreferences(mApp.getPackageName() + "_mdgwa_preferences", Context.MODE_PRIVATE);
-        var antirevoke = prefs != null ? prefs.getInt("antirevoke", 0) : 0;
+        var antirevoke = prefs.getInt("antirevoke", 0);
         var antirevokestatus = prefs != null ? prefs.getInt("antirevokestatus", 0) : 0;
 
 //        Toast.makeText(mContext, "AR: " + antirevoke + " / ARS: " + antirevokestatus, Toast.LENGTH_SHORT).show();

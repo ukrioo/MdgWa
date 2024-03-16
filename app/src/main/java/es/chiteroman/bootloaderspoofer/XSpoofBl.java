@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 
+import androidx.annotation.NonNull;
+
 import org.bouncycastle.asn1.ASN1Boolean;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1EncodableVector;
@@ -36,6 +38,7 @@ import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemReader;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.math.BigInteger;
 import java.security.KeyPair;
@@ -437,20 +440,7 @@ public final class XSpoofBl {
 
             ASN1Encodable[] teeEnforcedEncodables = {purpose, algorithm, keySize, digest, ecCurve, noAuthRequired, creationDateTime, origin, rootOfTrust, osVersion, osPatchLevel};
 
-            ASN1Integer attestationVersion = new ASN1Integer(4);
-            ASN1Enumerated attestationSecurityLevel = new ASN1Enumerated(1);
-            ASN1Integer keymasterVersion = new ASN1Integer(41);
-            ASN1Enumerated keymasterSecurityLevel = new ASN1Enumerated(1);
-            ASN1OctetString attestationChallenge = new DEROctetString(attestationChallengeBytes);
-            ASN1OctetString uniqueId = new DEROctetString("".getBytes());
-            ASN1Sequence softwareEnforced = new DERSequence();
-            ASN1Sequence teeEnforced = new DERSequence(teeEnforcedEncodables);
-
-            ASN1Encodable[] keyDescriptionEncodables = {attestationVersion, attestationSecurityLevel, keymasterVersion, keymasterSecurityLevel, attestationChallenge, uniqueId, softwareEnforced, teeEnforced};
-
-            ASN1Sequence keyDescriptionHackSeq = new DERSequence(keyDescriptionEncodables);
-
-            ASN1OctetString keyDescriptionOctetStr = new DEROctetString(keyDescriptionHackSeq);
+            ASN1OctetString keyDescriptionOctetStr = getAsn1OctetString(teeEnforcedEncodables);
 
             return new Extension(new ASN1ObjectIdentifier("1.3.6.1.4.1.11129.2.1.17"), false, keyDescriptionOctetStr);
 
@@ -458,6 +448,24 @@ public final class XSpoofBl {
 //            XposedBridge.log(t);
         }
         return null;
+    }
+
+    @NonNull
+    private static ASN1OctetString getAsn1OctetString(ASN1Encodable[] teeEnforcedEncodables) throws IOException {
+        ASN1Integer attestationVersion = new ASN1Integer(4);
+        ASN1Enumerated attestationSecurityLevel = new ASN1Enumerated(1);
+        ASN1Integer keymasterVersion = new ASN1Integer(41);
+        ASN1Enumerated keymasterSecurityLevel = new ASN1Enumerated(1);
+        ASN1OctetString attestationChallenge = new DEROctetString(attestationChallengeBytes);
+        ASN1OctetString uniqueId = new DEROctetString("".getBytes());
+        ASN1Sequence softwareEnforced = new DERSequence();
+        ASN1Sequence teeEnforced = new DERSequence(teeEnforcedEncodables);
+
+        ASN1Encodable[] keyDescriptionEncodables = {attestationVersion, attestationSecurityLevel, keymasterVersion, keymasterSecurityLevel, attestationChallenge, uniqueId, softwareEnforced, teeEnforced};
+
+        ASN1Sequence keyDescriptionHackSeq = new DERSequence(keyDescriptionEncodables);
+
+        return new DEROctetString(keyDescriptionHackSeq);
     }
 
     private static Certificate createLeafCert() {

@@ -1,5 +1,7 @@
 package its.madruga.wpp.xposed;
 
+import androidx.annotation.NonNull;
+
 import java.util.HashSet;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
@@ -8,14 +10,20 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import es.chiteroman.bootloaderspoofer.XSpoofBl;
 import io.github.lsposed.disableflagsecure.XDisableFlagSecure;
+import its.madruga.wpp.BuildConfig;
 import its.madruga.wpp.xposed.plugins.core.XDatabases;
 import its.madruga.wpp.xposed.plugins.core.XMain;
 
 public class XposedMain implements IXposedHookLoadPackage {
+    private static XSharedPreferences pref;
+
+    @NonNull
     public static XSharedPreferences getPref() {
-        XSharedPreferences pref = new XSharedPreferences("its.madruga.wpp");
-        pref.makeWorldReadable();
-        pref.reload();
+        if (pref == null) {
+            pref = new XSharedPreferences(BuildConfig.APPLICATION_ID);
+            pref.makeWorldReadable();
+            pref.reload();
+        }
         return pref;
     }
 
@@ -23,7 +31,7 @@ public class XposedMain implements IXposedHookLoadPackage {
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         var packageName = lpparam.packageName;
         var classLoader = lpparam.classLoader;
-        if (packageName.equals("its.madruga.wpp")) {
+        if (packageName.equals(BuildConfig.APPLICATION_ID)) {
             XposedChecker.setActiveModule(lpparam.classLoader);
         }
 

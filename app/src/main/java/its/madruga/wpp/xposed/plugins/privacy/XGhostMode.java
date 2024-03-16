@@ -19,8 +19,10 @@ public class XGhostMode extends XHookBase {
     public void doHook() {
         Class<?> class1 = XposedHelpers.findClass(param1, loader);
         Class<?> class2 = XposedHelpers.findClass(param2, loader);
-        boolean ghostmode = prefs != null ? prefs.getBoolean("ghostmode", false) : false;
+
+        var ghostmode = prefs.getBoolean("ghostmode", false);
         if (!ghostmode) return;
+
         XposedHelpers.findAndHookMethod(class1, ClassesReference.GhostMode.methodName, class1, class2, int.class, new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam param) {

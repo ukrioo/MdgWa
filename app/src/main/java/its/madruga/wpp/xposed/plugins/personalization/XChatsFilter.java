@@ -120,7 +120,6 @@ public class XChatsFilter extends XHookBase {
         });
     }
 
-    @SuppressWarnings("unchecked")
     private void hookTabInstance(Class<?> cFrag) {
         XposedHelpers.findAndHookMethod(classGetTab, loader, methodGetTab, int.class, new XC_MethodHook() {
             @Override

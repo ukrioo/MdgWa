@@ -121,7 +121,7 @@ public class XAntiRevoke extends XHookBase {
             }
             XposedHelpers.findAndHookMethod(bubbleViewClass, loader, bubbleViewMethod, ViewGroup.class, TextView.class, classMessage, new XC_MethodHook() {
                 @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                protected void afterHookedMethod(MethodHookParam param) {
                     var objMessage = param.args[2];
                     var dateTextView = (TextView) param.args[1];
                     isMRevoked(objMessage, dateTextView, "antirevoke");

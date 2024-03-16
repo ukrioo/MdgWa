@@ -13,9 +13,6 @@ import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod2;
 
 import android.graphics.Bitmap;
 import android.graphics.RecordingCanvas;
-import android.graphics.Bitmap;
-import android.graphics.RecordingCanvas;
-import android.net.Uri;
 import android.util.Pair;
 
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class XMediaQuality extends XHookBase {
         if (videoQuality) {
             XposedHelpers.findAndHookMethod(vClassQuality, loader, vMethodResolution, int.class, int.class, int.class, new XC_MethodHook() {
                 @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                protected void afterHookedMethod(MethodHookParam param) {
                     var pair = new Pair<>(param.args[0], param.args[1]);
                     param.setResult(pair);
                 }
@@ -47,14 +44,14 @@ public class XMediaQuality extends XHookBase {
 
             XposedHelpers.findAndHookMethod(vClassQuality, loader, vmethod2, int.class, new XC_MethodHook() {
                 @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                protected void afterHookedMethod(MethodHookParam param) {
                     param.setResult(1600000);
                 }
             });
 
             XposedHelpers.findAndHookMethod(vClassQuality, loader, vmethod, findClass(vParam1, loader), findClass(vParam2, loader), int.class, new XC_MethodReplacement() {
                 @Override
-                protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                protected Object replaceHookedMethod(MethodHookParam param) {
                     return new Pair<>(true, new ArrayList<>());
                 }
             });
@@ -71,7 +68,7 @@ public class XMediaQuality extends XHookBase {
                     int max = 10000;
                     int min = 1000;
                     for (int index = 0; index < props.length; index++) {
-                        if (props[index] == p1){
+                        if (props[index] == p1) {
                             if (index <= 2) {
                                 param.setResult(min);
                             } else {

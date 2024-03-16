@@ -57,8 +57,6 @@ public class XAntiRevoke extends XHookBase {
             Collections.addAll(messageRevokedList, currentRevokedMessages);
         }
         if (messageRevokedList != null && messageRevokedList.contains(messageKey)) {
-            // "Message Deleted"
-
             var antirevokeValue = mPref.getInt(antirevokeType, 0);
             if (antirevokeValue == 1) {
                 // Text
@@ -70,6 +68,13 @@ public class XAntiRevoke extends XHookBase {
                 drawable.setColorFilter(new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP));
                 dateTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
                 dateTextView.setCompoundDrawablePadding(5);
+            }
+        } else {
+            dateTextView.setCompoundDrawables(null, null, null, null);
+            var revokeNotice = mApp.getString(stringId) + " | ";
+            var dateText = dateTextView.getText().toString();
+            if (dateText.contains(revokeNotice)) {
+                dateTextView.setText(dateText.replace(revokeNotice, ""));
             }
         }
     }

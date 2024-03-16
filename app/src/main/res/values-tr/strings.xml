@@ -1,11 +1,5 @@
 <resources>
-    <string name="get_pid" translatable="false">pids=""; for p in /proc/[0-9]*; do read -r -d \'\' model &lt;$p/cmdline || [[ $model ]]; if [[ $model = com.whatsapp ]]; then pids+="${p##*/},"; fi done; setprop mdgwa.pids ${pids%,}</string>
-    <string name="app_name" translatable="false">MdgWa</string>
     <string name="app_desc">WhatsApp'ınızı özelleştirmek için bir Xposed modülü.</string>
-    <string-array name="scope">
-        <item>com.whatsapp</item>
-        <item>android</item>
-    </string-array>
     <string name="antirevoke">Mesaj silmeyi önleyici</string>
     <string name="antirevoke_sum">Etkin olduğunda, mesajlar sizin için silinmeyecektir.</string>
     <string name="ghostmode">Yazmayı ve kaydetmeyi gizle...</string>

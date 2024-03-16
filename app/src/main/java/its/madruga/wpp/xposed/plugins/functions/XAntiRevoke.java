@@ -40,14 +40,12 @@ public class XAntiRevoke extends XHookBase {
     @SuppressLint("StaticFieldLeak")
     private static Activity mConversation;
     private static SharedPreferences mShared;
-    public static SharedPreferences mPref;
 
     public XAntiRevoke(ClassLoader loader, XSharedPreferences preferences) {
         super(loader, preferences);
-        mPref = preferences;
     }
 
-    private static void isMRevoked(Object objMessage, TextView dateTextView, String antirevokeType) {
+    private void isMRevoked(Object objMessage, TextView dateTextView, String antirevokeType) {
         var fieldMessageDetails = XposedHelpers.getObjectField(objMessage, fieldMessageKey);
         var messageKey = (String) XposedHelpers.getObjectField(fieldMessageDetails, "A01");
         var stripJID = stripJID(getJidAuthor(objMessage));
@@ -57,7 +55,7 @@ public class XAntiRevoke extends XHookBase {
             Collections.addAll(messageRevokedList, currentRevokedMessages);
         }
         if (messageRevokedList != null && messageRevokedList.contains(messageKey)) {
-            var antirevokeValue = mPref.getInt(antirevokeType, 0);
+            var antirevokeValue = prefs.getInt(antirevokeType, 0);
             if (antirevokeValue == 1) {
                 // Text
                 var newTextData = mApp.getString(stringId) + " | " + dateTextView.getText();
@@ -194,7 +192,7 @@ public class XAntiRevoke extends XHookBase {
         String stripJID = stripJID(getJidAuthor(objMessage));
         try {
             String revokedsString = mShared.getString(stripJID + "_revoked", "");
-            if (revokedsString.equals("")) {
+            if (revokedsString.isEmpty()) {
                 return null;
             } else return StringToStringArray(revokedsString);
         } catch (Exception e) {
@@ -207,7 +205,7 @@ public class XAntiRevoke extends XHookBase {
         try {
             return (str.contains("@g.us") || str.contains("@s.whatsapp.net") || str.contains("@broadcast")) ? str.substring(0, str.indexOf("@")) : str;
         } catch (Exception e) {
-            e.printStackTrace();
+            XposedBridge.log(e.getMessage());
             return str;
         }
     }

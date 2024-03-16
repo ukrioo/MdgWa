@@ -16,8 +16,10 @@ public class XHideTag extends XHookBase {
 
     @Override
     public void doHook() {
-        boolean hidetag = prefs != null ? prefs.getBoolean("hidetag", false) : false;
-        if (!hidetag) return;
+        var hidetag = prefs.getBoolean("hidetag", false);
+        if (!hidetag)
+            return;
+
         XposedHelpers.findAndHookMethod(classMessageInfo, loader, methodSetForward, int.class, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {

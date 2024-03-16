@@ -6,10 +6,10 @@ import static its.madruga.wpp.ClassesReference.MediaQuality.imethod;
 import static its.madruga.wpp.ClassesReference.MediaQuality.iparam1;
 import static its.madruga.wpp.ClassesReference.MediaQuality.vClassQuality;
 import static its.madruga.wpp.ClassesReference.MediaQuality.vMethodResolution;
-import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod;
-import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod2;
 import static its.madruga.wpp.ClassesReference.MediaQuality.vParam1;
 import static its.madruga.wpp.ClassesReference.MediaQuality.vParam2;
+import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod;
+import static its.madruga.wpp.ClassesReference.MediaQuality.vmethod2;
 
 import android.util.Pair;
 
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
-import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import its.madruga.wpp.xposed.models.XHookBase;
 
@@ -29,9 +28,10 @@ public class XMediaQuality extends XHookBase {
 
     @Override
     public void doHook() {
-        boolean videoquality = prefs != null ? prefs.getBoolean("videoquality", false) : false;
-        boolean imagequality = prefs != null ? prefs.getBoolean("imagequality", false) : false;
-        if (videoquality) {
+        var videoQuality = prefs.getBoolean("videoquality", false);
+        var imageQuality = prefs.getBoolean("imagequality", false);
+
+        if (videoQuality) {
             XposedHelpers.findAndHookMethod(vClassQuality, loader, vMethodResolution, int.class, int.class, int.class, new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -54,7 +54,8 @@ public class XMediaQuality extends XHookBase {
                 }
             });
         }
-        if (imagequality) {
+
+        if (imageQuality) {
             var iqClass = findClass(imainClass, loader);
             XposedHelpers.findAndHookMethod(iqClass, imethod, findClass(iparam1, loader), iqClass, int.class, new XC_MethodHook() {
                 @Override

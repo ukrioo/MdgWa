@@ -142,6 +142,7 @@ public class XChatsFilter extends XHookBase {
                                     editableChatList.add(chat);
                                 }
                             }
+                            
                             param.setResult(editableChatList);
                             super.afterHookedMethod(param);
                         }

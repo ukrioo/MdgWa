@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_desc">WhatsApp'ınızı özelleştirmek için bir Xposed modülü.</string>
+    <string name="app_desc">WhatsApp\'ınızı özelleştirmek için bir Xposed modülü.</string>
     <string name="antirevoke">Mesaj silmeyi önleyici</string>
     <string name="antirevoke_sum">Etkin olduğunda, mesajlar sizin için silinmeyecektir.</string>
-    <string name="ghostmode">Yazmayı ve kaydetmeyi gizle...</string>
+    <string name="ghostmode">Yazmayı ve kaydetmeyi gizle…</string>
     <string name="hidetag">Yönlendirme etiketini gizle</string>
     <string name="hidetag_sum">Etkin olduğunda, iletileri yönlendirme etiketi olmadan iletmenizi sağlar.</string>
     <string name="hidestatusview">Durum görünümünü gizle</string>
@@ -11,15 +11,15 @@
     <string name="hideread_sum">Aktif olduğunda, kişinin okuduğunuzdan haberi olmadan mesajları okumanızı sağlar.</string>
     <string name="ghostmode_sum">Etkin olduğunda, kişi yazdığınızı veya ses kaydettiğinizi görmez.</string>
     <string name="danger">Uyarı</string>
-    <string name="reboot">Bu ekranda bir şey değiştirdiğinizde WhatsApp'ı yeniden başlatın!</string>
+    <string name="reboot">Bu ekranda bir şey değiştirdiğinizde WhatsApp\'ı yeniden başlatın!</string>
     <string name="reboot_module">Modülü yeniden başlat</string>
     <string name="funcoes">İşlevler</string>
     <string name="perso">Özelleştirme</string>
     <string name="segundosnahora">Zamanın içinde saniyeler</string>
     <string name="segundosnahora_sum">Zamanların yanına saniyeler koyar</string>
     <string name="textonahora">Zaman çizelgesinin yanına metin ekle</string>
-    <string name="no_active">Bu ekrandaysanız, modül henüz etkin değil, LSPosed yüklü değil veya LSPatch tarafından yamalanmış herhangi bir WhatsApp APK'nız yok demektir.\n\nLütfen düzeltin, modülü yeniden başlatın ve tekrar deneyin</string>
-    <string name="viewonce">Bir kez görüntüle'yi devre dışı bırak</string>
+    <string name="no_active">Bu ekrandaysanız, modül henüz etkin değil, LSPosed yüklü değil veya LSPatch tarafından yamalanmış herhangi bir WhatsApp APK\'nız yok demektir.\n\nLütfen düzeltin, modülü yeniden başlatın ve tekrar deneyin</string>
+    <string name="viewonce">Bir kez görüntüle\'yi devre dışı bırak</string>
     <string name="viewonce_sum">Etkin olduğunda, bir kez görüntüle mesajlarını istediğiniz kadar açmanıza olanak tanır.</string>
     <string name="novotema">Yeni WhatsApp teması</string>
     <string name="novotema_sum">Etkinleştirildiğinde, renk ve simge temasını yeni WhatsApp teması olarak değiştirir</string>
@@ -47,7 +47,7 @@
     <string name="videoquality_sum">[BETA] Videoları HD kalitesinde gönderir</string>
     <string name="colors_title">Renkler</string>
     <string name="colors_customization">Renklerinizi özelleştirin</string>
-    <string name="colors_customization_sum">WhatsApp'ınızdaki tüm renkleri değiştirin, şimdi deneyin!</string>
+    <string name="colors_customization_sum">WhatsApp\'ınızdaki tüm renkleri değiştirin, şimdi deneyin!</string>
     <string name="current_color_s">Mevcut renk: %s</string>
     <string name="apply_button">Uygula</string>
     <string name="invalid_color">Geçersiz renk</string>
@@ -62,7 +62,7 @@
     <string name="installed_version_s">Yüklü sürüm: %s</string>
     <string name="whatsapp_version_error">Bu WhatsApp sürümü modülümüz tarafından desteklenmiyor, lütfen gerekli WhatsApp sürümüne gidin</string>
     <string name="whatsapp_not_installed">WhatsApp yüklenmedi! Yükleyin ve tekrar deneyin</string>
-    <string name="restart_whatsapp">Whatsapp'ı yeniden başlat</string>
+    <string name="restart_whatsapp">Whatsapp\'ı yeniden başlat</string>
     <string name="media_title">Medya</string>
     <string name="general">Genel</string>
     <string name="novahome">Yeni anasayfa stili</string>
@@ -78,11 +78,11 @@
     <string name="menuwicon">Menü simgeleri</string>
     <string name="menuwicon_sum">Uygulama boyunca menü seçeneklerine simgeler ekler</string>
     <string name="strokebuttons">Düğme vuruşu</string>
-    <string name="strokebuttons_sum">WhatsApp'ta bazı düğmelerin etrafında çizgi oluşturur</string>
+    <string name="strokebuttons_sum">WhatsApp\'ta bazı düğmelerin etrafında çizgi oluşturur</string>
     <string name="outlinedicons">Anahatlı simgeler</string>
     <string name="outlinedicons_sum">Yeni simge stili, isterseniz etkinleştirin</string>
     <string name="freezelastseen">Son görülmeyi dondur</string>
-    <string name="freezelastseen_sum">Etkinleştirildiğinde, diğer kullanıcılardan gelen yazma, kaydetme, çevrimiçi olma gibi varlık güncellemelerini görmezsiniz...</string>
+    <string name="freezelastseen_sum">Etkinleştirildiğinde, diğer kullanıcılardan gelen yazma, kaydetme, çevrimiçi olma gibi varlık güncellemelerini görmezsiniz…</string>
     <string name="removeforwardlimit_sum">5 sohbet (normal) ve 1 sohbet (birden fazla kez) için iletme sınırını kaldırır</string>
     <string name="removeforwardlimit">İletme sınırını kaldır</string>
     <string name="forward">İletme</string>
@@ -107,11 +107,11 @@
     <string name="lsposed_not_found">LSPosed (root)</string>
     <string name="lspatch_not_found">LSPatch (root dışı)</string>
     <string name="loading">Yükleniyor</string>
-    <string name="module_not_enabled_text">Modül LSPosed'de devre dışı bırakıldı</string>
+    <string name="module_not_enabled_text">Modül LSPosed\'de devre dışı bırakıldı</string>
     <string name="module_not_setted_text">Modül etkinleştirildi, ancak kapsam boş</string>
     <string name="imagequality">Görüntüyü HD kalitesinde gönder</string>
     <string name="imagequality_sum">[BETA] Görüntüleri HD kalitesinde gönderir</string>
-    <string name="downloadviewonce">Bir Kez Görüntüle'yi İndirme</string>
+    <string name="downloadviewonce">Bir Kez Görüntüle\'yi İndirme</string>
     <string name="downloadviewonce_sum">[BETA] Bir kez indir düğmesi oluşturur</string>
     <string name="separate_groups_sum">Sohbetlerinizi şunlara göre ayırın: gruplar, özel sohbetler, durum, aramalar, topluluklar</string>
     <string name="separate_groups">Grupları ayır</string>

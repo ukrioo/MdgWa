@@ -347,19 +347,7 @@ public final class XSpoofBl {
                 teeEnforcedEncodables.add(taggedObject);
             }
 
-            SecureRandom random = new SecureRandom();
-
-            byte[] bytes1 = new byte[32];
-            byte[] bytes2 = new byte[32];
-
-            random.nextBytes(bytes1);
-            random.nextBytes(bytes2);
-
-            ASN1Encodable[] rootOfTrustEncodables = {new DEROctetString(bytes1), ASN1Boolean.TRUE, new ASN1Enumerated(0), new DEROctetString(bytes2)};
-
-            ASN1Sequence rootOfTrustSeq = new DERSequence(rootOfTrustEncodables);
-
-            ASN1TaggedObject rootOfTrust = new DERTaggedObject(true, 704, rootOfTrustSeq);
+            ASN1TaggedObject rootOfTrust = getAsn1TaggedObject();
 
             teeEnforcedEncodables.add(rootOfTrust);
 
@@ -385,6 +373,23 @@ public final class XSpoofBl {
         }
 
         return extension;
+    }
+
+    @NonNull
+    private static ASN1TaggedObject getAsn1TaggedObject() {
+        SecureRandom random = new SecureRandom();
+
+        byte[] bytes1 = new byte[32];
+        byte[] bytes2 = new byte[32];
+
+        random.nextBytes(bytes1);
+        random.nextBytes(bytes2);
+
+        ASN1Encodable[] rootOfTrustEncodables = {new DEROctetString(bytes1), ASN1Boolean.TRUE, new ASN1Enumerated(0), new DEROctetString(bytes2)};
+
+        ASN1Sequence rootOfTrustSeq = new DERSequence(rootOfTrustEncodables);
+
+        return new DERTaggedObject(true, 704, rootOfTrustSeq);
     }
 
     private static Extension createHackedExtensions() {

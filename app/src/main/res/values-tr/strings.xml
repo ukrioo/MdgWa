@@ -2,14 +2,14 @@
     <string name="app_desc">WhatsApp\'ınızı özelleştirmek için bir Xposed modülü.</string>
     <string name="antirevoke">Mesaj silmeyi önleyici</string>
     <string name="antirevoke_sum">Etkin olduğunda, mesajlar sizin için silinmeyecektir.</string>
-    <string name="ghostmode">Yazmayı ve kaydetmeyi gizle…</string>
+    <string name="ghostmode">Yazmayı gizle</string>
     <string name="hidetag">Yönlendirme etiketini gizle</string>
     <string name="hidetag_sum">Etkin olduğunda, iletileri yönlendirme etiketi olmadan iletmenizi sağlar.</string>
     <string name="hidestatusview">Durum görünümünü gizle</string>
     <string name="hidestatusview_sum">Aktif olduğunda, kişinin onları izlediğinizi bilmeden durumları görüntülemenizi sağlar.</string>
     <string name="hideread">Mesaj görünümünü gizle</string>
     <string name="hideread_sum">Aktif olduğunda, kişinin okuduğunuzdan haberi olmadan mesajları okumanızı sağlar.</string>
-    <string name="ghostmode_sum">Etkin olduğunda, kişi yazdığınızı veya ses kaydettiğinizi görmez.</string>
+    <string name="ghostmode_sum">Etkin olduğunda kişi yazdığınızı göremez</string>
     <string name="danger">Uyarı</string>
     <string name="reboot">Bu ekranda bir şey değiştirdiğinizde WhatsApp\'ı yeniden başlatın!</string>
     <string name="reboot_module">Modülü yeniden başlat</string>
@@ -26,8 +26,6 @@
     <string name="antirevokestatus">Durum silmeyi önleyici</string>
     <string name="antirevokestatus_sum">Aktif olduğunda, durumlar sizin için silinmeyecektir.</string>
     <string name="hidereceipt">Makbuzu gizle</string>
-    <string name="lorem_ipsum_dolor" translatable="false">Lorem Ipsum Dolor</string>
-    <string name="lorem_ipsum_dolor_sum" translatable="false">Lorem ipsum dolor sit amet,consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum.</string>
     <string name="hidereceipt_sum">Kullanıcılara mesajları aldığınızı söylemez</string>
     <string name="outros">Diğer</string>
     <string name="antirevoke_title">İptal etme önleyici</string>
@@ -54,10 +52,8 @@
     <string name="social_media_title">Sosyal medya</string>
     <string name="telegram_group">Telegram grubu</string>
     <string name="telegram_channel">Telegram kanalı</string>
-    <string name="github" translatable="false">Github</string>
     <string name="itsmadruga">ItsMadruga (Sahip)</string>
     <string name="darker935">Darker935 (Destekçi)</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="required_version_s">Gerekli sürüm: %s</string>
     <string name="installed_version_s">Yüklü sürüm: %s</string>
     <string name="whatsapp_version_error">Bu WhatsApp sürümü modülümüz tarafından desteklenmiyor, lütfen gerekli WhatsApp sürümüne gidin</string>
@@ -97,7 +93,7 @@
     <string name="reset">Sıfırla</string>
     <string name="bubble_left">Sol baloncuk</string>
     <string name="bubble_right">Sağ baloncuk</string>
-    <string name="general_summary">Whatsapp tarafından yerel olarak uygulanan özelleştirmeler</string>
+    <string name="general_summary">WhatsApp\'ta yerel olarak uygulanan özelleştirmeler</string>
     <string name="home_summary">Ana ekranı istediğiniz gibi özelleştirin</string>
     <string name="conversation_summary">Konuşma ekranınızdaki balonlar, giriş ve diğerleri gibi bazı şeyleri değiştirin</string>
     <string name="privacy_summary">Okuma onayını gizleme, makbuzu gizleme, son görülme ve daha fazlası</string>
@@ -110,9 +106,11 @@
     <string name="module_not_enabled_text">Modül LSPosed\'de devre dışı bırakıldı</string>
     <string name="module_not_setted_text">Modül etkinleştirildi, ancak kapsam boş</string>
     <string name="imagequality">Görüntüyü HD kalitesinde gönder</string>
-    <string name="imagequality_sum">[BETA] Görüntüleri HD kalitesinde gönderir</string>
+    <string name="imagequality_sum">Görüntüleri HD kalitesinde gönderir</string>
     <string name="downloadviewonce">Bir Kez Görüntüle\'yi İndirme</string>
-    <string name="downloadviewonce_sum">[BETA] Bir kez indir düğmesi oluşturur</string>
+    <string name="downloadviewonce_sum">Bir kez indir düğmesi oluşturur</string>
     <string name="separate_groups_sum">Sohbetlerinizi şunlara göre ayırın: gruplar, özel sohbetler, durum, aramalar, topluluklar</string>
     <string name="separate_groups">Grupları ayır</string>
+    <string name="ghostmode_r">Ses kaydını gizle...</string>
+    <string name="ghostmode_sum_r">Etkin olduğunda kişi ses kaydı yaptığınızı göremez</string>
 </resources>

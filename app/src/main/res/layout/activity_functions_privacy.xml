@@ -51,6 +51,14 @@
                     android:title="@string/privacy_title" />
 
                 <its.madruga.wpp.views.SwitchButton
+                    android:id="@+id/removeforwardlimit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:summary="@string/removeforwardlimit_sum"
+                    android:tag="removeforwardlimit"
+                    android:text="@string/removeforwardlimit" />
+
+                <its.madruga.wpp.views.SwitchButton
                     android:id="@+id/freezelastseen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,12 +91,19 @@
                     android:text="@string/hidereceipt" />
 
                 <its.madruga.wpp.views.SwitchButton
-                    android:id="@+id/ghostmode"
+                    android:id="@+id/ghostmode_t"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:summary="@string/ghostmode_sum"
-                    android:tag="ghostmode"
+                    android:tag="ghostmode_t"
                     android:text="@string/ghostmode" />
+                <its.madruga.wpp.views.SwitchButton
+                    android:id="@+id/ghostmode_r"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:summary="@string/ghostmode_sum_r"
+                    android:tag="ghostmode_r"
+                    android:text="@string/ghostmode_r" />
 
                 <its.madruga.wpp.views.SwitchButton
                     android:id="@+id/viewonce"

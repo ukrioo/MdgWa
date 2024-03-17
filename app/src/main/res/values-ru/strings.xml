@@ -41,9 +41,9 @@
     <string name="ampm">Время в 12-часовом формате</string>
     <string name="media_settings">Настройки мультимедиа</string>
     <string name="statusdowload">Загрузка статуса</string>
-    <string name="statusdowload_sum">[БЕТА] Активировать кнопку для скачивания статусов людей</string>
+    <string name="statusdowload_sum">" Активировать кнопку для скачивания статусов людей"</string>
     <string name="videoquality">Отправляйте видео в HD качестве</string>
-    <string name="videoquality_sum">[БЕТА] Отправляйте видео в HD-качестве</string>
+    <string name="videoquality_sum">Отправляйте видео в HD-качестве</string>
     <string name="colors_title">Цвета</string>
     <string name="colors_customization">Настройка ваших цветов</string>
     <string name="colors_customization_sum">Измените все цвета в своем WhatsApp, попробуйте прямо сейчас</string>

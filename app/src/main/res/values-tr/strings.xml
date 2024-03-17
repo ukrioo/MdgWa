@@ -40,9 +40,9 @@
     <string name="ampm">12 saat biçiminde zaman</string>
     <string name="media_settings">Medya ayarları</string>
     <string name="statusdowload">İndirme durumu</string>
-    <string name="statusdowload_sum">[BETA] Kişilerin durumlarını indirmek için bir düğme oluşturur</string>
+    <string name="statusdowload_sum">Kişilerin durumlarını indirmek için bir düğme oluşturur</string>
     <string name="videoquality">Videoları HD kalitesinde gönder</string>
-    <string name="videoquality_sum">[BETA] Videoları HD kalitesinde gönderir</string>
+    <string name="videoquality_sum">Videoları HD kalitesinde gönderir</string>
     <string name="colors_title">Renkler</string>
     <string name="colors_customization">Renklerinizi özelleştirin</string>
     <string name="colors_customization_sum">WhatsApp\'ınızdaki tüm renkleri değiştirin, şimdi deneyin!</string>

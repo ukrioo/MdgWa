@@ -79,14 +79,14 @@
     <string name="showname_sum">Muestra el nombre de tu cuenta en la parte superior de la pantalla de inicio, reemplazando \"WhatsApp\" por tu nombre.</string>
     <string name="social_media_title">Ajustes de medios</string>
     <string name="statusdowload">Descargar estados</string>
-    <string name="statusdowload_sum">[BETA] Crea un botón para descargar los estados de las personas</string>
+    <string name="statusdowload_sum">Crea un botón para descargar los estados de las personas</string>
     <string name="strokebuttons">Trazo o borde en botones</string>
     <string name="strokebuttons_sum">Crea un borde o trazo alrededor de algunos botones en WhatsApp</string>
     <string name="telegram_channel">Canal de Telegram</string>
     <string name="telegram_group">Grupo de Telegram</string>
     <string name="textonahora">Agregar texto al lado del horario</string>
     <string name="videoquality">Enviar vídeos en calidad HD</string>
-    <string name="videoquality_sum">[BETA] Envía vídeos en calidad HD</string>
+    <string name="videoquality_sum">" Envía vídeos en calidad HD"</string>
     <string name="viewonce">Deshabilitar Ver una vez</string>
     <string name="viewonce_sum">Cuando está activo, le permite abrir mensajes de visualización única tantas veces como desee.</string>
     <string name="whatsapp_not_installed">¡WhatsApp no ​​está instalado! Instalar e intentar nuevamente</string>

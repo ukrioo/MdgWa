@@ -43,7 +43,7 @@
     <string name="statusdowload">Baixar Status</string>
     <string name="statusdowload_sum">Criar um botão para baixar status das pessoas</string>
     <string name="videoquality">Enviar vídeos com a qualidade HD</string>
-    <string name="videoquality_sum">[BETA] Envie vídeos em qualidade HD</string>
+    <string name="videoquality_sum">Envie vídeos em qualidade HD</string>
     <string name="colors_title">Cores</string>
     <string name="colors_customization">Alterar cores</string>
     <string name="colors_customization_sum">Altere todas as cores do seu WhatsApp, experimente já!</string>

@@ -8,6 +8,7 @@
     <string name="antirevoke_sum">Etkinleştirildiğinde, mesajlar sizin için silinmeyecektir.</string>
     <string name="ghostmode">Yazmayı ve kaydetmeyi gizle</string>
     <string name="ghostmode_r">Kaydetmeyi gizle</string>
+    <string name="ghostmode_sum_r">Aktif ederseniz, kişi ses kaydı yaptığınızı göremez</string>
     <string name="hidetag">Yönlendirme etiketini gizle</string>
     <string name="hidetag_sum">Etkinleştirildiğinde, iletileri yönlendirme etiketi olmadan iletmenizi sağlar.</string>
     <string name="hidestatusview">Durumları Gördüğünü Gizle</string>

@@ -8,7 +8,6 @@ import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import es.chiteroman.bootloaderspoofer.XSpoofBl;
 import io.github.lsposed.disableflagsecure.XDisableFlagSecure;
 import its.madruga.wpp.BuildConfig;
 import its.madruga.wpp.xposed.plugins.core.XDatabases;
@@ -42,7 +41,6 @@ public class XposedMain implements IXposedHookLoadPackage {
             XDatabases.Initialize(classLoader, getPref());
         }
 
-        XSpoofBl.doHook(lpparam);
         XDisableFlagSecure.doHook(lpparam);
     }
 

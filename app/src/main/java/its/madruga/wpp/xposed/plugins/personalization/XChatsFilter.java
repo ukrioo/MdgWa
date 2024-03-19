@@ -25,6 +25,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
+import its.madruga.wpp.ClassesReference;
 import its.madruga.wpp.xposed.models.XHookBase;
 
 public class XChatsFilter extends XHookBase {
@@ -94,7 +95,7 @@ public class XChatsFilter extends XHookBase {
                     if (menu != null) {
                         var menuItem = (MenuItem) callMethod(menu, "findItem", GROUPS);
                         if (menuItem != null) {
-                            menuItem.setIcon(0x7f0803ce);
+                            menuItem.setIcon(ClassesReference.ChatsFilter.tabIconId);
                         }
                     }
                 }

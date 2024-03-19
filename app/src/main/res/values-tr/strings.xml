@@ -26,8 +26,6 @@
     <string name="antirevokestatus">Durum silmeyi önleyici</string>
     <string name="antirevokestatus_sum">Aktif olduğunda, durumlar sizin için silinmeyecektir.</string>
     <string name="hidereceipt">Makbuzu gizle</string>
-    <string name="lorem_ipsum_dolor" translatable="false">Lorem Ipsum Dolor</string>
-    <string name="lorem_ipsum_dolor_sum" translatable="false">Lorem ipsum dolor sit amet,consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum.</string>
     <string name="hidereceipt_sum">Kullanıcılara mesajları aldığınızı söylemez</string>
     <string name="outros">Diğer</string>
     <string name="antirevoke_title">İptal etme önleyici</string>
@@ -54,10 +52,8 @@
     <string name="social_media_title">Sosyal medya</string>
     <string name="telegram_group">Telegram grubu</string>
     <string name="telegram_channel">Telegram kanalı</string>
-    <string name="github" translatable="false">Github</string>
     <string name="itsmadruga">ItsMadruga (Sahip)</string>
     <string name="darker935">Darker935 (Destekçi)</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="required_version_s">Gerekli sürüm: %s</string>
     <string name="installed_version_s">Yüklü sürüm: %s</string>
     <string name="whatsapp_version_error">Bu WhatsApp sürümü modülümüz tarafından desteklenmiyor, lütfen gerekli WhatsApp sürümüne gidin</string>

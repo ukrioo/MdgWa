@@ -162,6 +162,6 @@ public class ClassesReference {
         public static String methodTabIcon = "A3l";
         public static String methodTabInstance = "A1e"; // Method without parameters returning List
         public static int nameId = 0x7f120528;
-        public static int tabIconId = 0x7f0803de;
+        public static int tabIconId = 0x7f0803df; // home_tab_communities_selector
     }
 }

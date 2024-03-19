@@ -1,9 +1,5 @@
 <resources>
     <string name="app_desc">WhatsApp\'ınızı özelleştirmek için bir Xposed modülü.</string>
-    <string-array name="scope">
-        <item>com.whatsapp</item>
-        <item>android</item>
-    </string-array>
     <string name="antirevoke">Silinen Mesajları Engelle</string>
     <string name="antirevoke_sum">Etkinleştirildiğinde, mesajlar sizin için silinmeyecektir.</string>
     <string name="ghostmode">Yazmayı ve kaydetmeyi gizle</string>

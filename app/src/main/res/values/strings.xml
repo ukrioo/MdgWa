@@ -8,14 +8,16 @@
     </string-array>
     <string name="antirevoke">Anti-Delete Messages</string>
     <string name="antirevoke_sum">When active, messages will not be deleted for you.</string>
-    <string name="ghostmode">Hide typing and recording…</string>
+    <string name="ghostmode">Hide typing</string>
+    <string name="ghostmode_sum">When active, the person cannot see that you are typing</string>
+    <string name="ghostmode_r">Hide recording audio...</string>
+    <string name="ghostmode_sum_r">When active, the person cannot see that you are recording audio</string>
     <string name="hidetag">Hide forwarding tag</string>
     <string name="hidetag_sum">When active, it allows you to forward messages without the forwarding tag.</string>
     <string name="hidestatusview">Hide Status View</string>
     <string name="hidestatusview_sum">When active, it allows you to view statuses without the person knowing that you watched them.</string>
     <string name="hideread">Hide Message View</string>
     <string name="hideread_sum">When active, it allows you to read messages without the person knowing that you have read them.</string>
-    <string name="ghostmode_sum">When active, the person will not see that you are typing or recording audio.</string>
     <string name="danger">Notice</string>
     <string name="reboot">Whenever you change something on this screen, restart WhatsApp!</string>
     <string name="reboot_module">Restart Module</string>
@@ -48,9 +50,9 @@
     <string name="ampm">Time in 12 Hour Format</string>
     <string name="media_settings">Media Settings</string>
     <string name="statusdowload">Download Status</string>
-    <string name="statusdowload_sum">[BETA] Create a button to download people\'s statuses</string>
+    <string name="statusdowload_sum">Create a button to download people\'s statuses</string>
     <string name="videoquality">Send videos in HD quality</string>
-    <string name="videoquality_sum">[BETA] Send videos in HD quality</string>
+    <string name="videoquality_sum">Send videos in HD quality</string>
     <string name="colors_title">Colors</string>
     <string name="colors_customization">Customize your colors</string>
     <string name="colors_customization_sum">Change all colors in your WhatsApp, try it now!</string>
@@ -110,15 +112,15 @@
     <string name="media_summary">Download status, media settings, and more</string>
     <string name="module_working_text">Module working with %s</string>
     <string name="module_not_working">Module not working</string>
-    <string name="lsposed_not_found">LSPosed (root)</string>
-    <string name="lspatch_not_found">LSPatch (non-root)</string>
+    <string name="lsposed_not_found">LSPosed not found</string>
+    <string name="lspatch_not_found">LSPatch not found</string>
     <string name="loading">Loading</string>
     <string name="module_not_enabled_text">The module is disabled on LSPosed</string>
     <string name="module_not_setted_text">The module is enabled, but the scope is empty</string>
     <string name="imagequality">Send imag in HD quality</string>
-    <string name="imagequality_sum">[BETA] Send images in HD quality</string>
+    <string name="imagequality_sum">Send images in HD quality</string>
     <string name="downloadviewonce">Download View Once</string>
-    <string name="downloadviewonce_sum">[BETA] Create a view once download button</string>
+    <string name="downloadviewonce_sum">Create a view once download button</string>
     <string name="separate_groups_sum">Separate your chats by: groups, private chats, status, calls, communities</string>
     <string name="separate_groups">Separate groups</string>
 </resources>

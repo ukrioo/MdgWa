@@ -25,6 +25,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
+import its.madruga.wpp.ClassesReference;
 import its.madruga.wpp.xposed.models.XHookBase;
 
 public class XChatsFilter extends XHookBase {
@@ -35,6 +36,7 @@ public class XChatsFilter extends XHookBase {
     public final int COMMUNITY = 600;
     public final int GROUPS = 800;
     public final ArrayList<Integer> tabs = new ArrayList<>();
+    public int tabCount = 0;
 
     public XChatsFilter(ClassLoader loader, XSharedPreferences preferences) {
         super(loader, preferences);
@@ -93,7 +95,7 @@ public class XChatsFilter extends XHookBase {
                     if (menu != null) {
                         var menuItem = (MenuItem) callMethod(menu, "findItem", GROUPS);
                         if (menuItem != null) {
-                            menuItem.setIcon(0x7f0803ce);
+                            menuItem.setIcon(ClassesReference.ChatsFilter.tabIconId);
                         }
                     }
                 }
@@ -132,7 +134,24 @@ public class XChatsFilter extends XHookBase {
                     XposedHelpers.findAndHookMethod(convFragmentClass.getName(), convFragmentClass.getClassLoader(), methodTabInstance, new XC_MethodHook() {
                         @Override
                         protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                            var isGroup = (boolean) XposedHelpers.getAdditionalInstanceField(param.thisObject, "isGroup");
+                            var isGroup = false;
+                            var isGroupField = XposedHelpers.getAdditionalInstanceField(param.thisObject, "isGroup");
+
+                            // Temp fix for
+                            if (isGroupField == null) {
+                                XposedBridge.log("-----------------------------------");
+                                XposedBridge.log("isGroupTabCount: " + tabCount);
+                                XposedBridge.log("isGroupTabField: " + (isGroupField != null));
+                                XposedBridge.log("isGroupTabCount >= 2: " + (tabCount >= 2));
+                                XposedBridge.log("-----------------------------------");
+                                isGroup = tabCount >= 2;
+                                tabCount++;
+                                if (tabCount == 4) tabCount = 0;
+                            } else {
+                                isGroup = (boolean) isGroupField;
+                            }
+                            XposedBridge.log("[•] isGroup: " + isGroup);
+
                             var chatsList = (List) param.getResult();
                             var editableChatList = new ArrayList<>();
                             var requiredServer = isGroup ? "g.us" : "s.whatsapp.net";

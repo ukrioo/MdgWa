@@ -58,10 +58,8 @@
     <string name="social_media_title">Sosyal medya</string>
     <string name="telegram_group">Telegram Grubu</string>
     <string name="telegram_channel">Telegram Kanalı</string>
-    <string name="github" translatable="false">Github</string>
     <string name="itsmadruga">ItsMadruga (Sahip)</string>
     <string name="darker935">Darker935 (Katkıda Bulunan)</string>
-    <string name="telegram" translatable="false">Telegram</string>
     <string name="required_version_s">Gerekli sürüm: %s</string>
     <string name="installed_version_s">Yüklenen sürüm: %s</string>
     <string name="whatsapp_version_error">Bu WhatsApp sürümü modülümüz tarafından desteklenmiyor, lütfen gerekli WhatsApp sürümüne gidin</string>

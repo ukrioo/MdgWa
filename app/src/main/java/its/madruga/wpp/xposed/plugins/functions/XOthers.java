@@ -129,7 +129,7 @@ public class XOthers extends XHookBase {
                 item.setOnMenuItemClickListener(menuItem -> {
                     if (!dndmode) {
                         new AlertDialog.Builder(home)
-                                .setTitle("Dnd Mode")
+                                .setTitle("DND Mode")
                                 .setMessage("When Do Not Disturb mode is on, you won't be able to send or receive messages.")
                                 .setPositiveButton("Activate", (dialog, which) -> {
                                     shared.edit().putBoolean("dndmode", dndmode ? false : true).commit();

@@ -129,9 +129,9 @@ public class XOthers extends XHookBase {
                 item.setOnMenuItemClickListener(menuItem -> {
                     if (!dndmode) {
                         new AlertDialog.Builder(home)
-                                .setTitle("Cu")
-                                .setMessage("peito")
-                                .setPositiveButton("peitos", (dialog, which) -> {
+                                .setTitle("Dnd Mode")
+                                .setMessage("When Dnd Mode is on, You will not be able to Send/Recieve Messages.")
+                                .setPositiveButton("Activate", (dialog, which) -> {
                                     shared.edit().putBoolean("dndmode", dndmode ? false : true).commit();
                                     XposedBridge.log(String.valueOf(shared.getBoolean("dndmode", false)));
 
@@ -142,7 +142,7 @@ public class XOthers extends XHookBase {
                                     }
                                     Runtime.getRuntime().exit(0);
                                 })
-                                .setNegativeButton("bundas", (dialog, which) -> dialog.dismiss())
+                                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
                                 .create().show();
                         return true;
                     }

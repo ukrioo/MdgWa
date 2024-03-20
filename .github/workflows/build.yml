@@ -16,6 +16,11 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Clear older runs
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh run list -L400 --json databaseId -q '.[].databaseId' | tail -n+10 | xargs -IID gh api "repos/$GITHUB_REPOSITORY/actions/runs/ID" -X DELETE || :
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle

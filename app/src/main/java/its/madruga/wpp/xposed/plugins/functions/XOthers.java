@@ -130,7 +130,7 @@ public class XOthers extends XHookBase {
                     if (!dndmode) {
                         new AlertDialog.Builder(home)
                                 .setTitle("Dnd Mode")
-                                .setMessage("When Dnd Mode is on, You will not be able to Send/Recieve Messages.")
+                                .setMessage("When Do Not Disturb mode is on, you won't be able to send or receive messages.")
                                 .setPositiveButton("Activate", (dialog, which) -> {
                                     shared.edit().putBoolean("dndmode", dndmode ? false : true).commit();
                                     XposedBridge.log(String.valueOf(shared.getBoolean("dndmode", false)));

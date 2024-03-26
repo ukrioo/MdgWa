@@ -9,17 +9,16 @@ import static its.madruga.wpp.xposed.plugins.core.XMain.mApp;
 
 import android.media.MediaScannerConnection;
 import android.os.Environment;
-import android.os.FileUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -78,9 +77,7 @@ public class XStatusDownload extends XHookBase {
         });
     }
 
-    private static boolean copyFile(File p) {
-        if (p == null) return false;
-
+    private static boolean copyFile(@NonNull File p) {
         var destination = getPathDestination(p);
 
         try (FileInputStream in = new FileInputStream(p);
@@ -98,7 +95,8 @@ public class XStatusDownload extends XHookBase {
                     MediaScannerConnection.scanFile(mApp,
                             new String[]{destination},
                             new String[]{getMimeTypeFromExtension(ext)},
-                            (path, uri) -> {});
+                            (path, uri) -> {
+                            });
 
                     return true;
                 }
@@ -110,7 +108,8 @@ public class XStatusDownload extends XHookBase {
         }
     }
 
-    private static String getPathDestination(File f) {
+    @NonNull
+    private static String getPathDestination(@NonNull File f) {
         var filePath = f.getAbsolutePath();
         var isVideo = false;
         var isImage = false;
@@ -149,23 +148,29 @@ public class XStatusDownload extends XHookBase {
             }
         }
 
+        String folderPath = getStatusFolderPath(isVideo, isImage, isAudio);
+
+        var mediaPath = new File(folderPath);
+
+        if (!mediaPath.exists())
+            mediaPath.mkdirs();
+
+        return mediaPath.getAbsolutePath() + "/" + f.getName();
+    }
+
+    @NonNull
+    private static String getStatusFolderPath(boolean isVideo, boolean isImage, boolean isAudio) {
+        String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath();
         if (isVideo) {
-            var folderPath = Environment.getExternalStorageDirectory() + "/Movies/WhatsApp/MdgWa Status/Status Videos/";
-            var videoPath = new File(folderPath);
-            if (!videoPath.exists()) videoPath.mkdirs();
-            return videoPath.getAbsolutePath() + "/" + f.getName();
+            folderPath += "/Movies/WhatsApp/MdgWa Status/Status Videos/";
         } else if (isImage) {
-            var folderPath = Environment.getExternalStorageDirectory() + "/Pictures/WhatsApp/MdgWa Status/Status Images/";
-            var imagePath = new File(folderPath);
-            if (!imagePath.exists()) imagePath.mkdirs();
-            return imagePath.getAbsolutePath() + "/" + f.getName();
+            folderPath += "/Pictures/WhatsApp/MdgWa Status/Status Images/";
         } else if (isAudio) {
-            var folderPath = Environment.getExternalStorageDirectory() + "/Music/WhatsApp/MdgWa Status/Status Sounds/";
-            var audioPath = new File(folderPath);
-            if (!audioPath.exists()) audioPath.mkdirs();
-            return audioPath.getAbsolutePath() + "/" + f.getName();
+            folderPath += "/Music/WhatsApp/MdgWa Status/Status Sounds/";
+        } else {
+            folderPath += "/Downloads/WhatsApp/MdgWa Status/Status Media/";
         }
-        return null;
+        return folderPath;
     }
 
     public static String getMimeTypeFromExtension(String extension) {

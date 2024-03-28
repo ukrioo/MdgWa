@@ -97,16 +97,16 @@ public class XChatsFilter extends XHookBase {
                 var cursor = db.rawQuery(sql, null);
                 while (cursor.moveToNext()) {
                     // row da jid do chat
-                    int jid = cursor.getInt(cursor.getColumnIndex("jid_row_id"));
+                    @SuppressLint("Range") int jid = cursor.getInt(cursor.getColumnIndex("jid_row_id"));
                     // verifica se esta arquivado ou n
-                    int hidden = cursor.getInt(cursor.getColumnIndex("hidden"));
+                    @SuppressLint("Range") int hidden = cursor.getInt(cursor.getColumnIndex("hidden"));
                     if (hidden == 1) return;
                     // aqui eu fiz pra verificar se e grupo ou n, ai ele pega as infos da jid de acordo com a row da jid ali de cima
                     var sql2 = "SELECT * FROM jid WHERE _id == ?";
                     var cursor1 = db.rawQuery(sql2, new String[]{ String.valueOf(jid)});
                     while (cursor1.moveToNext()) {
                         // esse server armazena oq ele e, s.whatsapp.net, lid, ou g.us
-                        var server = cursor1.getString(cursor1.getColumnIndex("server"));
+                        @SuppressLint("Range") var server = cursor1.getString(cursor1.getColumnIndex("server"));
                         // separacao simples
                         if (server.equals("g.us")) {
                             groupCount++;

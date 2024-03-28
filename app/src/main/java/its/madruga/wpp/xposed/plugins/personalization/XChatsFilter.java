@@ -2,7 +2,9 @@ package its.madruga.wpp.xposed.plugins.personalization;
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
+import static de.robv.android.xposed.XposedHelpers.findClass;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
+import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static its.madruga.wpp.ClassesReference.ChatsFilter.classGetTab;
 import static its.madruga.wpp.ClassesReference.ChatsFilter.classTabName;
 import static its.madruga.wpp.ClassesReference.ChatsFilter.classTabsList;
@@ -15,6 +17,7 @@ import static its.madruga.wpp.ClassesReference.ChatsFilter.nameId;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -72,7 +75,59 @@ public class XChatsFilter extends XHookBase {
         hookTabName();
         // Setting group icon
         hookTabIcon();
+        // Setting tab count
+        hookTabCount();
+    }
 
+    private void hookTabCount() {
+        var home = findClass("com.whatsapp.HomeActivity", loader);
+        findAndHookMethod(home, "A0p", home, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                var a1 = XposedHelpers.getObjectField(param.args[0], "A0i");
+                var chatCount = 0;
+                var groupCount = 0;
+                // Fiz ele pegar direto da database, esse metodo que dei hook, e chamado sempre q vc muda de tab, entra/sai de um chat ->
+                // ou quando a lista e atualizada, ent ele sempre vai atualizar
+                var db = SQLiteDatabase.openDatabase("/data/data/com.whatsapp/databases/msgstore.db", null, SQLiteDatabase.OPEN_READONLY);
+                // essa coluna que eu peguei, mostra a quantidade de mensagens n lidas (obvio ne).
+                // nao coloquei apenas > 0 pq quando vc marca um chat como nao lido, esse valor fica -1
+                // entao pra contar direitinho deixei != 0
+                var sql = "SELECT * FROM chat WHERE unseen_message_count != 0";
+                var cursor = db.rawQuery(sql, null);
+                while (cursor.moveToNext()) {
+                    // row da jid do chat
+                    int jid = cursor.getInt(cursor.getColumnIndex("jid_row_id"));
+                    // verifica se esta arquivado ou n
+                    int hidden = cursor.getInt(cursor.getColumnIndex("hidden"));
+                    if (hidden == 1) return;
+                    // aqui eu fiz pra verificar se e grupo ou n, ai ele pega as infos da jid de acordo com a row da jid ali de cima
+                    var sql2 = "SELECT * FROM jid WHERE _id == ?";
+                    var cursor1 = db.rawQuery(sql2, new String[]{ String.valueOf(jid)});
+                    while (cursor1.moveToNext()) {
+                        // esse server armazena oq ele e, s.whatsapp.net, lid, ou g.us
+                        var server = cursor1.getString(cursor1.getColumnIndex("server"));
+                        // separacao simples
+                        if (server.equals("g.us")) {
+                            groupCount++;
+                        } else {
+                            chatCount++;
+                        }
+                    }
+                }
+                // cada tab tem sua classe, ent eu percorro todas pra funcionar dboa
+                for(int i = 0; i < tabs.size(); i++) {
+                    var q = XposedHelpers.callMethod(a1, "A00", a1, i);
+
+                    // deixei a de call pq a de gp nao aparece
+                    if (tabs.get(i) == CALLS) {
+                        setObjectField(q, "A01", groupCount);
+                    } else if (tabs.get(i) == CHATS) {
+                        setObjectField(q, "A01", chatCount);
+                    }
+                }
+            }
+        });
     }
 
     private void hookTabIcon() {
@@ -165,6 +220,21 @@ public class XChatsFilter extends XHookBase {
                             super.afterHookedMethod(param);
                         }
                     });
+
+                    // corigindo a bct do fab
+                    XposedHelpers.findAndHookMethod(convFragmentClass.getName(), convFragmentClass.getClassLoader(), "BHP", new XC_MethodHook() {
+                        @Override
+                        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                            var isGroup = false;
+                            var isGroupField = XposedHelpers.getAdditionalInstanceField(param.thisObject, "isGroup");
+                            if (isGroupField != null) isGroup = (boolean) isGroupField;
+                            if (isGroup) {
+                                param.setResult(GROUPS);
+                            }
+                            super.afterHookedMethod(param);
+                        }
+                    });
+
                     param.setResult(convFragment);
                 } else {
                     super.afterHookedMethod(param);
@@ -195,7 +265,6 @@ public class XChatsFilter extends XHookBase {
                     tabs.add(CALLS);
                 }
                 XposedHelpers.setStaticObjectField(home, fieldTabsList, tabs);
-                XposedBridge.log(tabs.toString());
             }
         });
     }

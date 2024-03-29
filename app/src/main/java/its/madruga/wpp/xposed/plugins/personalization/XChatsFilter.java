@@ -3,6 +3,7 @@ package its.madruga.wpp.xposed.plugins.personalization;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import static de.robv.android.xposed.XposedHelpers.findClass;
+import static de.robv.android.xposed.XposedHelpers.getIntField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static its.madruga.wpp.ClassesReference.ChatsFilter.classGetTab;
@@ -17,10 +18,14 @@ import static its.madruga.wpp.ClassesReference.ChatsFilter.nameId;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,12 +125,26 @@ public class XChatsFilter extends XHookBase {
                     var q = XposedHelpers.callMethod(a1, "A00", a1, i);
 
                     // deixei a de call pq a de gp nao aparece
-                    if (tabs.get(i) == CALLS) {
+                    if (tabs.get(i) == CHATS) {
                         setObjectField(q, "A01", groupCount);
-                    } else if (tabs.get(i) == CHATS) {
+                    } else if (tabs.get(i) == CALLS) {
                         setObjectField(q, "A01", chatCount);
                     }
                 }
+                super.afterHookedMethod(param);
+            }
+        });
+        //Issaq meio q ativa o contador da tab de grupo, mas fica totalmente igual ao chats
+        findAndHookMethod("X.1NI", loader, "A05", Context.class, findClass("X.920", loader), int.class, new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                var indexTab = (int) param.args[2];
+                if (indexTab == 4) {
+                    param.args[2] = 0;
+                } else if (indexTab == 0) {
+                    param.args[2] = 1;
+                }
+                super.beforeHookedMethod(param);
             }
         });
     }

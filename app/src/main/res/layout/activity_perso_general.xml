@@ -50,14 +50,6 @@
                     android:title="@string/general" />
 
                 <its.madruga.wpp.views.SwitchButton
-                    android:id="@+id/novahome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:summary="@string/novahome_sum"
-                    android:tag="novahome"
-                    android:text="@string/novahome" />
-
-                <its.madruga.wpp.views.SwitchButton
                     android:id="@+id/novofiltro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

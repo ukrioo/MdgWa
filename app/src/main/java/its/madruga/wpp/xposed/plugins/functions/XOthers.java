@@ -50,7 +50,6 @@ public class XOthers extends XHookBase {
         });
         Class<?> propsClass1 = findClass(paramProps, loader);
         Class<?> propsClass2 = findClass(paramProps2, loader);
-        var newHome = prefs != null && prefs.getBoolean("novahome", false);
         var novoTema = prefs != null && prefs.getBoolean("novotema", false);
         var menuWIcons = prefs != null && prefs.getBoolean("menuwicon", false);
         var newSettings = prefs != null && prefs.getBoolean("novaconfig", false);
@@ -59,7 +58,6 @@ public class XOthers extends XHookBase {
         var outlinedIcons = prefs != null && prefs.getBoolean("outlinedicons", false);
         var separateGroups = prefs != null && prefs.getBoolean("separategroups", false);
 
-        props.put(3289, newHome);
         props.put(4524, novoTema);
         props.put(4497, menuWIcons);
         props.put(4023, newSettings);

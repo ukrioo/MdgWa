@@ -48,20 +48,11 @@ public class XChatsFilter extends XHookBase {
 
     public XChatsFilter(ClassLoader loader, XSharedPreferences preferences) {
         super(loader, preferences);
-        var newHome = prefs.getBoolean("novahome", false);
-        if (newHome) {
             tabs.add(CHATS);
             tabs.add(GROUPS);
             tabs.add(STATUS);
             tabs.add(COMMUNITY);
             tabs.add(CALLS);
-        } else {
-            tabs.add(COMMUNITY);
-            tabs.add(CHATS);
-            tabs.add(GROUPS);
-            tabs.add(STATUS);
-            tabs.add(CALLS);
-        }
     }
 
     public void doHook() {
@@ -139,10 +130,10 @@ public class XChatsFilter extends XHookBase {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 var indexTab = (int) param.args[2];
-                if (indexTab == 4) {
-                    param.args[2] = 0;
-                } else if (indexTab == 0) {
-                    param.args[2] = 1;
+                if (indexTab == tabs.indexOf(CALLS)) {
+                    param.args[2] = tabs.indexOf(CHATS);
+                } else if (indexTab == tabs.indexOf(CHATS)) {
+                    param.args[2] = tabs.indexOf(GROUPS);
                 }
                 super.beforeHookedMethod(param);
             }
@@ -268,21 +259,6 @@ public class XChatsFilter extends XHookBase {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
-                var newHome = prefs != null && prefs.getBoolean("novahome", false);
-                tabs.clear();
-                if (newHome) {
-                    tabs.add(CHATS);
-                    tabs.add(GROUPS);
-                    tabs.add(STATUS);
-                    tabs.add(COMMUNITY);
-                    tabs.add(CALLS);
-                } else {
-                    tabs.add(COMMUNITY);
-                    tabs.add(CHATS);
-                    tabs.add(GROUPS);
-                    tabs.add(STATUS);
-                    tabs.add(CALLS);
-                }
                 XposedHelpers.setStaticObjectField(home, fieldTabsList, tabs);
             }
         });

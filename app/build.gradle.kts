@@ -12,7 +12,7 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 2
-        versionName = "2.24.5.76"
+        versionName = "2.24.6.77"
         proguardFiles()
 
     }
